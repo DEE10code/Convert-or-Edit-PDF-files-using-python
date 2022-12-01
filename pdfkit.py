@@ -2,8 +2,8 @@ from glob import glob
 
 import pikepdf
 from pikepdf import Pdf, PdfImage
-from pdf2docx import Converter, parse
-
+from pdf2docx import Converter
+import docx2pdf
 
 def Rotate():
     act = int(input("How much degree you want to rotate - "))
@@ -114,4 +114,3 @@ elif pdf == 8:
 else:
     print("Wrong input")
 
-# it will be updated
