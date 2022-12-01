@@ -2,6 +2,8 @@ from glob import glob
 
 import pikepdf
 from pikepdf import Pdf, PdfImage
+from pdf2docx import Converter, parse
+
 
 def Rotate():
     act = int(input("How much degree you want to rotate - "))
@@ -66,6 +68,14 @@ def image_extract():
         print("Something went wrong")
 
 
+def pdf_word():
+    pdfname = pdf_name
+    wordname = 'converted_pdf.docx'
+    #Convert Method
+    cv = Converter(pdfname)
+    cv.convert(wordname, start=0, end=None)
+
+
 # main code
 
 print(
@@ -82,6 +92,7 @@ pdf = int(input("Which operation you want to perform - \n"
                 "5.Cut_page\n"
                 "6.Merge\n"
                 "7.image_extract\n"
+                "8.Convert PDF to Word\n"
                 "Enter the operation you like by number -"))
 
 if pdf == 1:
@@ -98,6 +109,8 @@ elif pdf == 6:
     Merge()
 elif pdf == 7:
     image_extract()
+elif pdf == 8:
+    pdf_word()
 else:
     print("Wrong input")
 
