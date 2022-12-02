@@ -2,7 +2,6 @@ from glob import glob
 import pikepdf
 from pikepdf import Pdf, PdfImage
 from pdf2docx import Converter
-import docx2pdf
 from pdf2image import convert_from_path
 
 
