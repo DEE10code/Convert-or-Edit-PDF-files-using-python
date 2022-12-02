@@ -1,15 +1,17 @@
 from glob import glob
-
 import pikepdf
 from pikepdf import Pdf, PdfImage
 from pdf2docx import Converter
 import docx2pdf
+from pdf2image import convert_from_path
+
 
 def Rotate():
     act = int(input("How much degree you want to rotate - "))
     for i in old_pdf.pages:
         i.Rotate = act
         old_pdf.save("newRotated.pdf")
+
 
 def Protected():
     owner = input("Enter the name of the Owner - ")
@@ -27,15 +29,18 @@ def Split_pages():
         name = "Page" + str(n) + ".pdf"
         new_pdf.save(name)
 
+
 def Reverse_oder():
     old_pdf.pages.reverse()
     old_pdf.save("Reverse.pdf")
+
 
 def Cut_page():
     a = int(input('Which Page no you Want to copy '))
     b = int(input('Which Page no you Want to paste '))
     old_pdf.pages[a] = old_pdf.pages[b]
     old_pdf.save("Replace.pdf")
+
 
 def Merge():
     ques = input("Enter those pdf file into the exe folder... "
@@ -47,6 +52,7 @@ def Merge():
             new_pdf.pages.extend(olds_pdf.pages)
     else:
         print("Sorry can't process")
+
 
 def image_extract():
     ab = int(input('Enter the page no where the picture belong-'  ))
@@ -76,6 +82,16 @@ def pdf_word():
     cv.convert(wordname, start=0, end=None)
 
 
+def pdf_img():
+    dpii = int(input("Enter the dpi(b/w 200 to 800) - "))
+    images = convert_from_path(pdf_name,dpii,poppler_path=r'C:\Program Files\poppler-22.11.0\Library\bin')
+    for i in range(len(images)):
+        images[i].save('Image'+ str(i)+'.jpg','JPEG')
+
+
+
+
+
 # main code
 
 print(
@@ -93,6 +109,7 @@ pdf = int(input("Which operation you want to perform - \n"
                 "6.Merge\n"
                 "7.image_extract\n"
                 "8.Convert PDF to Word\n"
+                "9.Convert PDF to Image\n"
                 "Enter the operation you like by number -"))
 
 if pdf == 1:
@@ -111,6 +128,8 @@ elif pdf == 7:
     image_extract()
 elif pdf == 8:
     pdf_word()
+elif pdf == 9:
+    pdf_img()
 else:
     print("Wrong input")
 
