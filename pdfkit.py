@@ -4,7 +4,6 @@ from pikepdf import Pdf, PdfImage
 from pdf2docx import Converter
 from pdf2image import convert_from_path
 
-
 def Rotate():
     act = int(input("How much degree you want to rotate - "))
     for i in old_pdf.pages:
@@ -96,7 +95,11 @@ def pdf_img():
 print(
     "Please Notice if you want to do works with this function at first you have to put the file at the same "
     "destination where the exe or the .py program belongs")
+
+
+
 pdf_name = input("Enter the pdf file name(like-anish.pdf)- ")
+
 old_pdf = pikepdf.Pdf.open(pdf_name)
 
 pdf = int(input("Which operation you want to perform - \n"
