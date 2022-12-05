@@ -10,7 +10,6 @@ def Rotate():
         i.Rotate = act
         old_pdf.save("newRotated.pdf")
 
-
 def Protected():
     owner = input("Enter the name of the Owner - ")
     passw = input("Enter the password - ")
